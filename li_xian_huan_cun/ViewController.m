@@ -124,6 +124,10 @@
     return _dataArray.count;
 }
 
+
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ItemCell *cell = [ItemCell itemCellWithTableView:tableView];
     cell.item = _dataArray[indexPath.row];
