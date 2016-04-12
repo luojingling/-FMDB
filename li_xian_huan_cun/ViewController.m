@@ -95,6 +95,7 @@
     }];
 }
 
+//下拉刷新
 - (void)loadNewData {
     NSLog(@"下拉刷新");
     _currentPage = 1;
@@ -102,6 +103,7 @@
     [self getTableViewDataWithPage:_currentPage];
 }
 
+//上拉加载
 - (void)loadMoreData {
     NSLog(@"上拉加载");
     _currentPage ++;
@@ -110,7 +112,7 @@
         [_dataArray addObjectsFromArray:[XLDataBase listWithRange:range]];
         [_tableView reloadData];
         [_tableView.footer endRefreshing];
-        NSLog(@"数据库加载%lu条更多数据",[[XLDataBase listWithRange:range] count]);
+        NSLog(@"数据库加载%lu条更多数据",(unsigned long)[[XLDataBase listWithRange:range] count]);
     }else{
         //数据库没更多数据时再网络请求
         [self getTableViewDataWithPage:_currentPage];
@@ -136,6 +138,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc{
+    NSLog(@"当前控制器被销毁了");
 }
 
 @end
